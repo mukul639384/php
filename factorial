@@ -1,0 +1,36 @@
+<html>
+<head>
+<title> factorial of any no </title>
+	<style type="text/css">
+	.button{
+  border: 2px solid red;
+  border-radius: 15px;
+}
+	</style>
+</head>
+<body>
+
+<?php
+$number=" ";
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+	$number=factorial($_POST["fact"]);
+	
+}
+function factorial($data)
+{
+	if($data<=1)
+		return 1;
+	else
+		return $data*(factorial($data-1));
+}
+?>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+enter a no: <input id="button" type="number" name="fact" placeholder="enter a no">
+<?php
+echo "<br> factorial of entered no is <br>";
+echo $number;
+
+?>
+</body>
+</html>
